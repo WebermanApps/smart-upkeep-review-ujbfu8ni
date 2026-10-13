@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="apple-touch-icon" href="../apple-touch-icon.png?v=1"><link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png?v=1"><link rel="manifest" href="../manifest.webmanifest?v=1"><meta name="apple-mobile-web-app-title" content="Upkeep"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#FFFFFF">
+<meta charset="utf-8">
+<script src="../pricing-config.js?v=c13"></script><script src="../gate.js?v=gate3"></script>
+<noscript><style>body>*{display:none!important}</style></noscript>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex,nofollow">
+<title>Review Build · Lawn Mowing Quote · Smart Upkeep</title>
+<meta name="description" content="Measure Your Lawn From Above And Get An Instant Mowing Quote">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600&family=Khand:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.css">
+<link rel="stylesheet" href="lawn.css?v=2">
+</head>
+<body>
+<div style="display:flex;justify-content:flex-start"><a class="dash-back" href="https://webermanapps.github.io/upkeep-cc-d36d3521/" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;padding:0 14px 0 10px;margin:8px 0 0 8px;border:1px solid #d9d9d9;border-radius:999px;background:#f7f7f7;color:#171717;text-decoration:none;font:700 14px/1 sans-serif;white-space:nowrap;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C1502E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>UpKeep Dashboard</a><span style="flex:1"></span><a class="home-pill mw-hover" href="../#home" aria-label="Home" style="margin:8px 8px 0 0;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:44px;min-width:44px;padding:0 12px;border:1px solid #d9d9d9;border-radius:999px;background:#fff;color:#171717;text-decoration:none;font:600 14px/1 sans-serif;white-space:nowrap;flex:none"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2M6 9.6V20h12V9.6" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5.2h4V20" fill="none" stroke="#C1502E" stroke-width="2.2" stroke-linejoin="round"/></svg><span>Home</span></a></div><header class="top">
+  <a href="../" class="brand mw-hover" aria-label="Smart Upkeep home"><img src="../assets/A-roof-chevron.svg?v=c6" alt="Smart Upkeep"></a>
+</header>
+<main>
+  <section class="hero">
+    <svg class="illo" viewBox="0 0 120 60" aria-hidden="true"><path d="M2 56h116" stroke="#0B6E4F" stroke-width="2"/><g stroke="#0B6E4F" stroke-width="2" fill="none" stroke-linecap="round"><path d="M8 56l-2-9M12 56l1-11M16 56l-3-8M100 56l-2-10M105 56l1-8M110 56l3-11M114 56l-1-7"/></g><g fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M34 40h40l6-10H40z" fill="#C1502E"/><path d="M80 30l14-22"/><path d="M90 8h8"/><circle cx="42" cy="46" r="6" fill="#FAF3EB"/><circle cx="72" cy="46" r="6" fill="#FAF3EB"/><path d="M48 30v-5h14v5"/></g></svg>
+    <h1>Lawn Mowing Quote</h1>
+    <form id="addrForm" class="addr" autocomplete="off">
+      <label class="sr" for="addr">Home Address</label>
+      <input id="addr" name="addr" type="text" inputmode="text" placeholder="Enter Your Home Address" required>
+      <button class="btn btn-primary mw-hover" type="submit">Find My Lawn</button>
+    </form>
+    <p id="addrMsg" class="msg" role="status"></p>
+  </section>
+
+  <section id="measure" class="measure" hidden>
+    <div class="steps"><span>1. Fit</span><span>2. Skip</span><span>3. Schedule</span></div>
+    <div class="mapwrap">
+      <div id="map" aria-label="Satellite view of your property"></div>
+      <div class="maptag" id="mapTag">Adjust To Fit Your Lawn</div>
+    </div>
+    <div class="tools" role="toolbar" aria-label="Lawn drawing tools">
+      <button class="tool mw-hover" data-add="lawn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 21l-1-6M9 21l1-8M13 21l-1-5M17 21l1-7M20 21l-1-4" stroke="#0B6E4F" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Add Lawn</button>
+      <button class="tool mw-hover" data-add="drive" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3L4 21M16 3l4 18M12 5v3M12 11v3M12 17v3" stroke="#05668D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Driveway</button>
+      <button class="tool mw-hover" data-add="house" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10" stroke="#C1502E" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>Skip Area</button>
+      <button class="tool mw-hover" id="resetBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v5h5" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Start Over</button>
+    </div>
+    <p class="hint" id="hint">Drag Corners To Fit</p>
+    <ul id="areas" class="areas"></ul>
+
+    <div class="quote">
+      <div class="sqft"><span class="lbl">Mowable Lawn</span><strong id="sqft">0</strong><span class="unit">Sq Ft</span></div>
+      <div class="freq" role="radiogroup" aria-label="Schedule">
+        <button class="seg mw-hover on" data-f="weekly" role="radio" aria-checked="true" type="button">Weekly <small>Apr–Oct</small></button>
+        <button class="seg mw-hover" data-f="biweekly" role="radio" aria-checked="false" type="button">Every 2 Weeks <small>Apr–Oct</small></button>
+        <button class="seg mw-hover" data-f="once" role="radio" aria-checked="false" type="button">One-Time <small>Single Cut</small></button>
+      </div>
+      <div class="price">
+        <div><span id="perCut" class="big">$0</span><span class="per">/ Cut</span></div>
+        <p id="priceNote" class="pnote"></p>
+        <details class="warn-drop lawn-draft"><summary class="draft-sum">1 Warning · Draft Pricing</summary><div class="warn-body">Prices are draft and pending approval. Same rate for members and non-members.</div></details>
+        <span class="same">Same Price For Members</span>
+      </div>
+      <p class="incl">Mow, Trim, Blow</p>
+      <button id="addPlan" class="btn btn-primary wide mw-hover" type="button">Add To My Plan</button>
+      <p id="planMsg" class="msg" role="status"></p>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+</footer>
+<div class="sharebar"><button id="shareBtn" class="btn btn-outline mw-hover" type="button">Share</button><span id="shareMsg" class="msg" role="status"></span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.1.0/turf.min.js"></script>
+<script src="lawn-pricing.js?v=2"></script>
+<script src="lawn.js?v=2"></script>
+<script src="../ptr.js" defer></script>
+</body>
+</html>

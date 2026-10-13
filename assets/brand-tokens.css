@@ -1,0 +1,38 @@
+/* Smart Upkeep brand tokens (V.2: Deck 4 pure white base, one small accent per screen) — Style Swipe rebrand (Oct 12 2026)
+   Tags: clear, system-like, warm, lively, multi-accent, visual, guided, easy.
+   Light mode only. Micro-dose accents on white/cream — never full-color blocks. */
+:root {
+  --mw-background: #ffffff;
+  --mw-cream: #F7F7F7;
+  --mw-cream-sel: #F0F0F0;
+  --mw-open: #ffffff;
+  --mw-foreground: #0a0a0a;
+  --mw-muted-text: #525252;
+
+  --mw-terracotta: #C1502E;
+  --mw-terracotta-deep: #A8431F;
+  --mw-lagoon: #05668D;
+  --mw-lagoon-tint: #00A6A6;
+  --mw-jungle: #0B6E4F;
+  --mw-saffron: #D4A017;
+
+  --mw-primary: var(--mw-terracotta);
+  --mw-primary-foreground: #ffffff;
+  --mw-secondary: var(--mw-cream);
+  --mw-accent: var(--mw-lagoon);
+  --mw-success: var(--mw-jungle);
+  --mw-border: #e5e5e5;
+  --mw-dark-surface: #0a0a0a;
+
+  --mw-font-heading: "Khand", sans-serif;
+  --mw-font-body: "Hind", system-ui, sans-serif;
+  --mw-radius: 0.625rem;
+  --mw-tracking-label: 0.1em;
+  --mw-ease: cubic-bezier(.2,.8,.2,1);
+  --mw-dur: 180ms;
+  color-scheme: light;
+}
+.mw-hover { transition: transform var(--mw-dur) var(--mw-ease), box-shadow var(--mw-dur) var(--mw-ease), background-color var(--mw-dur) var(--mw-ease), border-color var(--mw-dur) var(--mw-ease), color var(--mw-dur) var(--mw-ease); }
+.mw-hover:hover, .mw-hover:focus-visible { transform: translateY(-1px) scale(1.03); box-shadow: 0 6px 18px rgba(10,10,10,.12); }
+.mw-hover:active { transform: scale(.98); }
+@media (prefers-reduced-motion: reduce) { .mw-hover, .mw-hover:hover { transition: none; transform: none; } }
